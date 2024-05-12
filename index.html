@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Todo App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Todo App</h1>
+        <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task" />
+        <ul>
+            <li v-for="task in tasks" :key="task.id">
+                <label>
+                    <input type="checkbox" v-model="task.completed">
+                    <del v-if="task.completed">{{ task.text }}</del>
+                    <span v-else>{{ task.text }}</span>
+                </label>
+                <button @click="removeTask(task.id)">Remove</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Import Vue.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Link to our main JavaScript file -->
+    <script src="/js/main.js"></script>
+</body>
+</html>
